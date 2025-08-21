@@ -172,7 +172,7 @@ export default async function handler(req, res) {
                         <p style='padding-bottom:5px;'>${user.first_name} ${user.last_name},</p>
                         ${user.barcode_base64 ? `<div class="barcode-sec"><img src="${user.barcode_base64}" alt="Barcode" width="300" /></div>` : "<p>No Barcode</p>"}
                         <p>${user.mailing_address}</p>
-                        <p>${user.mailing_town}, ${user.mailing_zip}, ${user.mailing_carrier_route}, ${user.county}, ${user.state}</p>
+                        <p>${user.mailing_zip}</p>
                     </div>
                     <div class="image-sec">
                         ${banner_sec_image_base64 ? `<img src="${banner_sec_image_base64}" alt="banner Image" width="300" />` : "<p>Image Not Found</p>"}
