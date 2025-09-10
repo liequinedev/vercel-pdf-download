@@ -120,7 +120,7 @@ export default async function handler(req, res) {
               text-align: center;
               font-size: 18px;
               font-weight: 700;
-              color: #000000;
+              color: #932313;
           }
           .static-cnt-div {
               display: grid;
