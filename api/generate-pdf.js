@@ -100,6 +100,7 @@ export default async function handler(req, res) {
               text-align: center;
               margin-bottom: 8px;
               font-weight: 700;
+              color: #932313;
           }
           .static-subcnt-div {
               border: 2px solid #932313;
@@ -119,6 +120,7 @@ export default async function handler(req, res) {
               text-align: center;
               font-size: 18px;
               font-weight: 700;
+              color: #932313;
           }
           .static-cnt-div {
               display: grid;
@@ -152,6 +154,11 @@ export default async function handler(req, res) {
           #backBtn:hover {
               background-color: #bf7f51;
           }
+          .address-section-indiv{
+              display:flex;
+              justify-content: space-between;
+              gap:30px;
+          }
           @media print {
               #downloadBtn, #backBtn {
                   display: none;
@@ -171,8 +178,16 @@ export default async function handler(req, res) {
                     <div class="address">
                         <p style='padding-bottom:5px;'>${user.first_name} ${user.last_name},</p>
                         ${user.barcode_base64 ? `<div class="barcode-sec"><img src="${user.barcode_base64}" alt="Barcode" width="300" /></div>` : "<p>No Barcode</p>"}
-                        <p>${user.mailing_address}</p>
-                        <p>${user.mailing_zip}</p>
+                        <div class="address-section-indiv">
+                          <div>
+                            <p>${user.mailing_address}</p>
+                            <p>${user.mailing_zip}</p>
+                          </div>
+                          <div>
+                            <p>${user.bin_number}</p>
+                            <p>${user.date}</p>
+                          </div>
+                        </div>                        
                     </div>
                     <div class="image-sec">
                         ${banner_sec_image_base64 ? `<img src="${banner_sec_image_base64}" alt="banner Image" width="300" />` : "<p>Image Not Found</p>"}
@@ -238,7 +253,7 @@ export default async function handler(req, res) {
     await page.setContent(html, { waitUntil: 'networkidle0' });
     await page.emulateMediaType('screen');
     const pdfBuffer = await page.pdf({
-      format: 'A4',
+      format: 'Letter',
       printBackground: true,         // <-- critical for background-color / background-image
       preferCSSPageSize: true,       // use CSS page sizes if you define them
       margin: { top: '5mm', bottom: '5mm', left: '5mm', right: '5mm' }
